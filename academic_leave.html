@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Academic Leave Form</title>
+  <style>
+    body {
+      background-color: #d0e4f7; /* Light blue background */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 60, 130, 0.2);
+    }
+
+    h2 {
+      text-align: center;
+      color: #0b3d91;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 600;
+      color: #0a2e6f;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border-radius: 6px;
+      border: 1px solid #8ab6d6;
+      background-color: #eef6fd;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    button {
+      margin-top: 25px;
+      width: 100%;
+      background-color: #0b3d91;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #082c6c;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Academic Leave Form</h2>
+    <form id="academicLeaveForm">
+
+      <!-- Leave Dates -->
+      <label for="fromDate">Leave From:</label>
+      <input type="date" id="fromDate" name="fromDate" required>
+
+      <label for="toDate">Leave To:</label>
+      <input type="date" id="toDate" name="toDate" required>
+
+      <!-- Travel Mode -->
+      <label for="travelMode">Travel Mode:</label>
+      <select id="travelMode" name="travelMode" onchange="toggleParentSection()" required>
+        <option value="">-- Select --</option>
+        <option value="Alone">Going Alone</option>
+        <option value="With Parents">Going With Parents</option>
+      </select>
+
+      <!-- Parent Info Section -->
+      <div id="parentInfo" class="hidden">
+        <label for="parentPhone">Parent's Mobile Number:</label>
+        <input type="tel" id="parentPhone" name="parentPhone" placeholder="e.g. 9876543210">
+
+        <label for="parentAddress">Parent's Address:</label>
+        <textarea id="parentAddress" name="parentAddress" rows="3" placeholder="Enter parent's address"></textarea>
+      </div>
+
+      <!-- Student Address -->
+      <label for="studentAddress">Your Address:</label>
+      <textarea id="studentAddress" name="studentAddress" rows="3" placeholder="Enter your address" required></textarea>
+
+      <!-- Reason for Leave -->
+      <label for="reason">Reason for Leave:</label>
+      <textarea id="reason" name="reason" rows="3" placeholder="Enter reason for academic leave" required></textarea>
+
+      <!-- Submit -->
+      <button type="submit">Submit Academic Leave Form</button>
+
+    </form>
+  </div>
+
+  <script>
+    function toggleParentSection() {
+      const mode = document.getElementById("travelMode").value;
+      const parentInfo = document.getElementById("parentInfo");
+
+      if (mode === "With Parents") {
+        parentInfo.classList.remove("hidden");
+        document.getElementById("parentPhone").required = true;
+        document.getElementById("parentAddress").required = true;
+      } else {
+        parentInfo.classList.add("hidden");
+        document.getElementById("parentPhone").required = false;
+        document.getElementById("parentAddress").required = false;
+      }
+    }
+
+    // Form submission
+    document.getElementById("academicLeaveForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("Academic Leave Form Submitted Successfully!");
+      this.reset();
+      document.getElementById("parentInfo").classList.add("hidden");
+    });
+  </script>
+
+</body>
+</html>

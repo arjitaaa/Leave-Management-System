@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Select Your Login Portal</title>
+  <style>
+    /* Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow: hidden;
+      background: linear-gradient(135deg, #e3f2fd, #90caf9);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: rgb(22, 1, 1);
+      position: relative;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Top-right back button */
+    .top-right-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 999;
+    }
+
+    .top-right-btn a {
+      background-color: #1a237e;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+
+    .top-right-btn a:hover {
+      background-color: #0d47a1;
+    }
+
+    /* Container Styles */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      padding: 40px;
+      z-index: 10;
+    }
+
+    .title {
+      text-align: center;
+      margin-bottom: 50px;
+      font-size: 2.5rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Button Styles */
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .login-button {
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 20px;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      text-decoration: none;
+      color: rgb(22, 1, 1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .login-button:hover {
+      transform: translateY(-10px);
+      background: rgba(255, 255, 255, 0.25);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    }
+
+    .login-button:hover .photo {
+      transform: scale(1.1);
+    }
+
+    .photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid white;
+      margin-right: 30px;
+      transition: all 0.4s ease;
+      flex-shrink: 0;
+    }
+
+    .button-text {
+      flex-grow: 1;
+    }
+
+    .button-text h2 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    .button-text p {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    /* Background Animation Elements */
+    .shape {
+      position: absolute;
+      opacity: 0.6;
+      animation: float 15s infinite linear;
+      z-index: 1;
+    }
+
+    .circle {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      border: 2px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .triangle {
+      width: 0;
+      height: 0;
+      border-left: 50px solid transparent;
+      border-right: 50px solid transparent;
+      border-bottom: 100px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .square {
+      width: 80px;
+      height: 80px;
+      background: rgba(255, 255, 255, 0.3);
+      transform: rotate(45deg);
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-50px) rotate(180deg); }
+      100% { transform: translateY(0) rotate(360deg); }
+    }
+
+
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .container {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+
+  .button-container {
+    gap: 20px;
+  }
+
+  .login-button {
+    flex-direction: column;
+    text-align: center;
+    padding: 15px;
+  }
+
+  .photo {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 15px;
+  }
+
+  .button-text h2 {
+    font-size: 1.5rem;
+  }
+
+  .button-text p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .top-right-btn a {
+    padding: 8px 14px;
+    font-size: 12px;
+  }
+
+  .title {
+    font-size: 1.6rem;
+  }
+
+  .photo {
+    width: 80px;
+    height: 80px;
+  }
+
+  .button-text h2 {
+    font-size: 1.3rem;
+  }
+
+  .button-text p {
+    font-size: 0.9rem;
+  }
+
+  .container {
+    padding: 20px;
+  }
+}
+
+    
+  </style>
+</head>
+<body>
+  <!-- Top Right Home Button -->
+  <div class="top-right-btn">
+    <a href="index.html">🏠Back to Home</a>
+  </div>
+
+  <!-- Background Shapes -->
+  <div class="shape circle" style="top: 10%; left: 5%; animation-delay: 0s;"></div>
+  <div class="shape triangle" style="top: 70%; left: 85%; animation-delay: 2s;"></div>
+  <div class="shape square" style="top: 30%; left: 75%; animation-delay: 4s;"></div>
+  <div class="shape circle" style="top: 80%; left: 15%; width: 60px; height: 60px; animation-delay: 1s;"></div>
+  <div class="shape triangle" style="top: 20%; left: 70%; animation-delay: 3s;"></div>
+  <div class="shape square" style="top: 60%; left: 10%; width: 50px; height: 50px; animation-delay: 5s;"></div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <h1 class="title">Select Your Login Portal</h1>
+
+    <div class="button-container">
+      <a href="login.html" class="login-button">
+        <img src="images/avatar.webp" alt="Student" class="photo" />
+        <div class="button-text">
+          <h2>As a Student</h2>
+          <p>Access your courses, assignments, and academic records</p>
+        </div>
+      </a>
+
+      <a href="parent_login.php" class="login-button">
+        <img src="images/father.webp" alt="Parent" class="photo" />
+        <div class="button-text">
+          <h2>As a Parent</h2>
+          <p>View your child's progress, attendance, and reports</p>
+        </div>
+      </a>
+
+      <a href="hod_login.php" class="login-button">
+        <img src="images/prof.png" alt="HOD" class="photo" />
+        <div class="button-text">
+          <h2>As a HOD</h2>
+          <p>Manage department activities, faculty, and resources</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</body>
+</html>

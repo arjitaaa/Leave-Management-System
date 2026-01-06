@@ -1,0 +1,4 @@
+/xamppfiles/
+/vendor/
+.env
+*.log

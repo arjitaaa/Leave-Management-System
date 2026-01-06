@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - DRDO-SSPL Leave Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #FFF8DC;
+            color: #5a5a5a;
+            overflow-x: hidden;
+            padding-top: 100px;
+            /* Added to account for fixed navbar */
+        }
+
+   
+        .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: linear-gradient(90deg, #064663, #0e7490);
+      color: #fff;
+      z-index: 999;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+      padding: 15px 30px;
+    }
+
+    .logo {
+      height: 50px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links li {
+      margin-left: 25px;
+    }
+
+    .nav-links li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: color 0.3s;
+    }
+
+    .nav-links li a:hover,
+    .nav-links li a.active {
+      color: #ffdd57;
+    }
+
+    /* Hamburger */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background: #fff;
+      margin: 4px 0;
+      border-radius: 5px;
+    }
+
+
+        .main-content {
+            min-height: calc(100vh - 180px);
+            /* Adjust based on your footer height */
+            padding-bottom: 60px;
+            /* Space before footer */
+        }
+
+        /* Contact Container */
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+        }
+
+        /* Animated Background Shapes */
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: #005f9e;
+            top: -100px;
+            left: -100px;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            background: #e63946;
+            bottom: -50px;
+            right: -50px;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            animation: float 6s ease-in-out infinite reverse;
+        }
+
+        .shape-3 {
+            width: 150px;
+            height: 150px;
+            background: #2a9d8f;
+            top: 40%;
+            right: 10%;
+            transform: rotate(45deg);
+            animation: pulse 4s ease infinite;
+        }
+
+        /* Header Section */
+        .contact-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .contact-title {
+            font-size: 2.8rem;
+            color: #1d3557;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .contact-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #005f9e, #e63946);
+            border-radius: 2px;
+        }
+
+        .contact-subtitle {
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Project Info Card */
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: linear-gradient(to bottom, #005f9e, #2a9d8f);
+        }
+
+        .project-title {
+            font-size: 1.8rem;
+            color: #005f9e;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .project-title i {
+            margin-right: 15px;
+            color: #e63946;
+        }
+
+        .project-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .detail-icon {
+            font-size: 1.2rem;
+            color: #2a9d8f;
+            margin-right: 10px;
+            margin-top: 3px;
+        }
+
+        /* Contact Info Section */
+        .contact-info {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: #f1faee;
+            border-radius: 50%;
+            transform: translate(50%, 50%);
+            z-index: -1;
+        }
+
+        .info-title {
+            font-size: 1.5rem;
+            color: #005f9e;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .info-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #e63946;
+            border-radius: 3px;
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-item {
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: flex-start;
+            transition: transform 0.3s ease;
+        }
+
+        .info-item:hover {
+            transform: translateX(5px);
+        }
+
+        .info-icon {
+            width: 40px;
+            height: 40px;
+            background: #f1faee;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: #005f9e;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .info-text h3 {
+            font-size: 1.1rem;
+            color: #1d3557;
+            margin-bottom: 5px;
+        }
+
+        .info-text p,
+        .info-text a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .info-text a:hover {
+            color: #005f9e;
+        }
+
+        /* Team Section */
+        .team-section {
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .team-title {
+            font-size: 2rem;
+            color: #1d3557;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .team-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #005f9e, #e63946);
+            border-radius: 2px;
+        }
+
+        .team-members {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .member-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .member-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .member-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #005f9e, #2a9d8f);
+        }
+
+        .member-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #f1faee;
+            margin: 0 auto 1rem;
+            display: block;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .member-name {
+            font-size: 1.3rem;
+            color: #1d3557;
+            margin-bottom: 5px;
+        }
+
+        .member-role {
+            color: #005f9e;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .member-card p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .member-contact {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 1.5rem;
+        }
+
+        .member-contact a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #f1faee;
+            color: #005f9e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .member-contact a:hover {
+            background: #005f9e;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        
+    /* Footer */
+    footer {
+      background: linear-gradient(90deg, #064663, #0e7490);
+      color: #ddd;
+      padding: 50px 20px 20px;
+    }
+
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .footer-col h3 {
+      color: #ffd700;
+      margin-bottom: 20px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li a {
+      color: #ddd;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-col ul li a:hover {
+      color: #ffd700;
+    }
+
+    .social-links a {
+      color: #ddd;
+      margin-right: 10px;
+    }
+
+    .social-links a:hover {
+      color: #ffd700;
+    }
+
+    .copyright {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 0.9rem;
+    }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <img src="images/Logo.png" alt="Logo" class="logo" />
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about_us.html">About Us</a></li>
+                    <li><a href="contact_us.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <div class="contact-container">
+            <!-- Background Shapes -->
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+
+            <!-- Header Section -->
+            <div class="contact-header">
+                <h1 class="contact-title">Contact Our Team</h1>
+                <p class="contact-subtitle">Have questions about our DRDO-SSPL Leave Management System? Reach out to our
+                    development team for support and inquiries.</p>
+            </div>
+
+            <!-- Project Info Card -->
+            <div class="project-card">
+                <h2 class="project-title"><i class="fas fa-project-diagram"></i> About Our Project</h2>
+                <p>We are developing a comprehensive Leave Management System for DRDO's Solid State Physics Laboratory
+                    (SSPL) as part of our internship program. This system will streamline leave applications, approvals,
+                    and tracking for the organization.</p>
+
+                <div class="project-details">
+                    <div class="detail-item">
+                        <div class="detail-icon"><i class="fas fa-building"></i></div>
+                        <div>
+                            <h3>Organization</h3>
+                            <p>DRDO - Solid State Physics Laboratory</p>
+                        </div>
+                    </div>
+
+                    <div class="detail-item">
+                        <div class="detail-icon"><i class="fas fa-users"></i></div>
+                        <div>
+                            <h3>Team Size</h3>
+                            <p>3 Members</p>
+                        </div>
+                    </div>
+
+                    <div class="detail-item">
+                        <div class="detail-icon"><i class="fas fa-calendar-alt"></i></div>
+                        <div>
+                            <h3>Duration</h3>
+                            <p>2-Months Summer Internship 2025</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Contact Content -->
+            <div class="contact-content">
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <h2 class="info-title">Get In Touch</h2>
+                    <ul class="info-list">
+                        <li class="info-item">
+                            <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="info-text">
+                                <h3>Our Location</h3>
+                                <p>DRDO-SSPL, Lucknow Road, Timarpur, Delhi-110054</p>
+                            </div>
+                        </li>
+
+                        <li class="info-item">
+                            <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="info-text">
+                                <h3>Email Us</h3>
+                                <p><a href="mailto:lms-team@drdo.sspl.gov.in">lms-team@drdo.sspl.gov.in</a></p>
+                            </div>
+                        </li>
+
+                        <li class="info-item">
+                            <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
+                            <div class="info-text">
+                                <h3>Call Us</h3>
+                                <p><a href="tel:+911123456789">+91 11 2345 6789</a></p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Team Section -->
+            <div class="team-section">
+                <h2 class="team-title">Our Development Team</h2>
+                <p>Meet the talented individuals behind the DRDO-SSPL Leave Management System</p>
+
+                <div class="team-members">
+                    <!-- Team Member 1 -->
+                    <div class="member-card">
+                        <img src="images/avatar.webp" alt="Team Member" class="member-img">
+                        <h3 class="member-name">Arjita Jain</h3>
+                        <span class="member-role"> Developer</span>
+                        <p>Specialized in frontend and backend development and database architecture</p>
+
+                        <div class="member-contact">
+                            <a href="https://www.linkedin.com/in/arjita-jain-903323287/" target="_blank"><i
+                                    class="fab fa-linkedin-in"></i></a>
+                            <a href="https://github.com/arjitajain04" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://mail.google.com/mail/?view=cm&to=arjitajain1553@gmail.com&su=Hello%20Arjita!&body=Hi%20Arjita,%0AI%20visited%20your%20portfolio%20and%20wanted%20to%20connect!"
+                                target="_blank">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Team Member 2 -->
+                    <div class="member-card">
+                        <img src="images/avatar.webp" alt="Team Member" class="member-img">
+                        <h3 class="member-name">Arohi Garg</h3>
+                        <span class="member-role"> Developer</span>
+                        <p>Specialized in frontend and backend development and database architecture</p>
+
+                        <div class="member-contact">
+                            <a href="https://www.linkedin.com/in/arohi-garg-626821277/" target="_blank"><i
+                                    class="fab fa-linkedin-in"></i></a>
+                            <a href="https://github.com/Arohigarg11" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://mail.google.com/mail/?view=cm&to=gargarohi0@gmail.com&su=Hello%20Arohi!&body=Hi%20Arohi,%0AI%20visited%20your%20portfolio%20and%20wanted%20to%20connect!"
+                                target="_blank">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Team Member 3 -->
+                    <div class="member-card">
+                        <img src="images/avatar.webp" alt="Team Member" class="member-img">
+                        <h3 class="member-name">Bhumi Jadon</h3>
+                        <span class="member-role">Developer</span>
+                        <p>Specialized in frontend and backend development and database architecture</p>
+
+                        <div class="member-contact">
+                            <a href="https://www.linkedin.com/in/bhumi-jadon-b4b915204/" target="_blank"><i
+                                    class="fab fa-linkedin-in"></i></a>
+                            <a href="https://github.com/Bhumijadon-07" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://mail.google.com/mail/?view=cm&to=bhumijadon0706@gmail.com&su=Hello%20Bhumi!&body=Hi%20Bhumi,%0AI%20just%20visited%20your%20portfolio%20and%20wanted%20to%20connect!"
+                                target="_blank">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about_us.html">About Us</a></li>
+          <li><a href="contact_us.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Contact Us</h3>
+        <ul>
+          <li>Banasthali Vidyapith</li>
+          <li>Banasthali, Rajasthan - 304022</li>
+          <li>Phone: +91-1438-228456</li>
+          <li>Email: info@banasthali.org</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Follow Us</h3>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Banasthali Vidyapith. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript for Toggle Menu -->
+  <script>
+    const toggle = document.getElementById("menu-toggle");
+    const navLinks = document.getElementById("navLinks");
+
+    toggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+  </script>
+</body>
+
+</html>

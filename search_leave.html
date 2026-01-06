@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Leave Application - Search by Roll No</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- <link rel="stylesheet" href="navbar.css"> -->
+  <!-- <link rel="stylesheet" href="footer.css"> -->
+  <link rel="stylesheet" href="search_leave.css">
+</head>
+<body>
+  <!-- Navbar will be inserted here -->
+<!-- Navigation -->
+<nav class="navbar">
+  <div class="nav-container">
+      <img src="images/Logo.png" alt="Banasthali Logo" class="logo">
+      <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="aboutus.html">About us</a></li>
+          <li><a href="contact_us.html">Contact us</a></li>
+          <li class="search-container">
+              <input type="text" placeholder="Search..." class="search-input">
+              <button class="search-btn"><i class="fas fa-search"></i></button>
+              
+          </li>
+      </ul>
+  </div>
+</nav>
+
+  <main>
+    <div class="search-container">
+      <h2>Search Leave Form</h2>
+      <form action="submit_form.html" method="get">
+        <label for="roll">Enter Roll Number:</label>
+        <input type="text" id="roll" name="roll" placeholder="e.g. 22IT1234" required>
+        <button type="submit">Go</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer will be inserted here -->
+  <div id="footer-container"></div>
+
+  <script>
+    // Load navbar
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar-container').innerHTML = data;
+      });
+
+    // Load footer
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-container').innerHTML = data;
+      });
+  </script>
+</body>
+</html>

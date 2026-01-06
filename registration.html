@@ -1,0 +1,320 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Banasthali Vidyapith - Registration Form</title>
+  <link rel="stylesheet" href="registration.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <img src="images/Logo.png" alt="Logo" class="logo" />
+      <div class="menu-toggle" id="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about_us.html">About Us</a></li>
+          <li><a href="contact_us.html">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+ <!-- Form Header -->
+<div class="form-header">
+  <h1>Student Registration Form</h1>
+  <p>Fill out the form below to register with Banasthali Vidyapith</p>
+</div>
+
+
+ <div class="container" style="display: flex; justify-content: center;">
+  <form id="registrationForm" style="max-width: 1000px; width: 100%;" action="http://localhost/leave_mgmt/registration.php" method="POST" enctype="multipart/form-data">
+
+
+      <div class="form-section">
+        <h2 class="form-section-title">Student Information</h2>
+
+        <div class="form-row">
+          <div class="form-col">
+            <div class="form-group">
+              <label for="email" class="form-label required">Email</label>
+              <input type="email" id="email" name="email" class="form-control" placeholder="e.g. student@example.com" required />
+            </div>
+          </div>
+
+          <div class="form-col">
+            <div class="form-group">
+              <label for="pass" class="form-label required">Password</label>
+              <input type="password" id="password" name="pass" class="form-control" placeholder="Enter your password" required />
+            </div>
+          </div>
+
+          <div class="form-col">
+            <div class="form-group">
+              <label for="rollNo" class="form-label required">Roll No.</label>
+              <input type="text" id="rollNo" name="rollNo" class="form-control" placeholder="e.g. 22CS1001" required />
+            </div>
+          </div>
+
+          <div class="form-col">
+            <div class="form-group">
+              <label for="studentId" class="form-label required">Student ID</label>
+              <input type="text" id="studentId" name="studentId" class="form-control" placeholder="e.g. STU123456" required />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-col">
+            <div class="form-group">
+              <label for="registrationDate" class="form-label required">Date of Registration</label>
+              <input type="date" id="registrationDate" name="registrationDate" class="form-control" required />
+            </div>
+          </div>
+          <div class="form-col">
+            <div class="form-group">
+              <label for="registrationTime" class="form-label required">Time of Registration</label>
+              <input type="time" id="registrationTime" name="registrationTime" class="form-control" required />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-col">
+            <div class="form-group">
+              <label for="firstName" class="form-label required">First Name</label>
+              <input type="text" id="firstName" name="firstName" class="form-control" placeholder="e.g. Arjita" required />
+            </div>
+          </div>
+          <div class="form-col">
+            <div class="form-group">
+              <label for="lastName" class="form-label required">Last Name</label>
+              <input type="text" id="lastName" name="lastName" class="form-control" placeholder="e.g. Jain" required />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-col">
+            <div class="form-group">
+              <label for="branch" class="form-label required">Branch</label>
+              <select id="branch" name="branch" class="form-control" required>
+                <option value="">Select Branch</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Electronics">Electronics</option>
+                <option value="Mechanical">Mechanical</option>
+                <option value="Civil">Civil</option>
+                <option value="Electrical">Electrical</option>
+                <option value="Biotechnology">Biotechnology</option>
+                <option value="Chemistry">Chemistry</option>
+                <option value="Physics">Physics</option>
+                <option value="Mathematics">Mathematics</option>
+                <option value="Commerce">Commerce</option>
+                <option value="Arts">Arts</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-col">
+            <div class="form-group">
+              <label for="class" class="form-label required">Class</label>
+              <select id="class" name="class" class="form-control" required>
+                <option value="">Select Class</option>
+                <option value="B.Tech">B.Tech</option>
+                <option value="M.Tech">M.Tech</option>
+                <option value="B.Sc">B.Sc</option>
+                <option value="M.Sc">M.Sc</option>
+                <option value="B.Com">B.Com</option>
+                <option value="M.Com">M.Com</option>
+                <option value="BA">BA</option>
+                <option value="MA">MA</option>
+                <option value="PhD">PhD</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-col">
+            <div class="form-group">
+              <label for="semester" class="form-label required">Current Semester</label>
+              <select id="semester" name="semester" class="form-control" required>
+                <option value="">Select Semester</option>
+                <option value="1">1st Semester</option>
+                <option value="2">2nd Semester</option>
+                <option value="3">3rd Semester</option>
+                <option value="4">4th Semester</option>
+                <option value="5">5th Semester</option>
+                <option value="6">6th Semester</option>
+                <option value="7">7th Semester</option>
+                <option value="8">8th Semester</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-col">
+            <div class="form-group">
+              <label for="mobile" class="form-label required">Mobile Number</label>
+              <input type="tel" id="mobile" name="mobile" class="form-control" placeholder="e.g. 98765XXXXX" required />
+            </div>
+          </div>
+          <div class="form-col">
+            <div class="form-group">
+              <label for="internalNo" class="form-label">Internal Number (Optional)</label>
+              <input type="text" id="internalNo" name="internalNo" class="form-control" placeholder="Optional" />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-col">
+            <div class="form-group">
+              <label for="studentPermanentAddress" class="form-label required">Permanent Address</label>
+              <textarea id="studentPermanentAddress" name="studentPermanentAddress" class="form-control" rows="3" placeholder="e.g. 123 Main Street, Jaipur" required></textarea>
+            </div>
+          </div>
+          <div class="form-col">
+            <div class="form-group">
+              <label for="studentPresentAddress" class="form-label">Present Address</label>
+              <textarea id="studentPresentAddress" name="studentPresentAddress" class="form-control" rows="3" placeholder="If different from permanent address"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="photo" class="form-label required">Upload Photo</label>
+            <input type="file" id="photo" name="photo" class="form-control" accept="image/*" required />
+            <small>Accepted formats: JPG, PNG. Max size: 2MB</small>
+          </div>
+        </div>
+        
+      </div>
+
+      <div class="form-section">
+        <h2 class="form-section-title">Father's Information</h2>
+
+        <div class="form-row">
+          <div class="form-col">
+            <div class="form-group">
+              <label for="fatherName" class="form-label required">Father's Name</label>
+              <input type="text" id="fatherName" name="fatherName" class="form-control" placeholder="e.g. Mr. Ramesh Sharma" required />
+            </div>
+          </div>
+          <div class="form-col">
+            <div class="form-group">
+              <label for="fatherMobile" class="form-label required">Father's Mobile Number</label>
+              <input type="tel" id="fatherMobile" name="fatherMobile" class="form-control" placeholder="e.g. 98765XXXXX" required />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="fatherAddress" class="form-label">Father's Address</label>
+          <textarea id="fatherAddress" name="fatherAddress" class="form-control" rows="3" placeholder="e.g. 123 Main Street, Jaipur"></textarea>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h2 class="form-section-title">Mother's Information</h2>
+
+        <div class="form-row">
+          <div class="form-col">
+            <div class="form-group">
+              <label for="motherName" class="form-label required">Mother's Name</label>
+              <input type="text" id="motherName" name="motherName" class="form-control" placeholder="e.g. Mrs. Sunita Sharma" required />
+            </div>
+          </div>
+          <div class="form-col">
+            <div class="form-group">
+              <label for="motherMobile" class="form-label">Mother's Mobile Number</label>
+              <input type="tel" id="motherMobile" name="motherMobile" class="form-control" placeholder="e.g. 98765XXXXX" />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="motherAddress" class="form-label">Mother's Address</label>
+          <textarea id="motherAddress" name="motherAddress" class="form-control" rows="3" placeholder="e.g. 123 Main Street, Jaipur"></textarea>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Submit Registration</button>
+        <button type="reset" class="btn btn-secondary">Reset Form</button>
+      </div>
+    </form>
+  </div>
+
+    <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about_us.html">About Us</a></li>
+          <li><a href="contact_us.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Contact Us</h3>
+        <ul>
+          <li>Banasthali Vidyapith</li>
+          <li>Banasthali, Rajasthan - 304022</li>
+          <li>Phone: +91-1438-228456</li>
+          <li>Email: info@banasthali.org</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Follow Us</h3>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Banasthali Vidyapith. All Rights Reserved.</p>
+    </div>
+  </footer>
+   <script>
+    document.getElementById('registrationForm').addEventListener('submit', function (e) {
+      let isValid = true;
+      const requiredFields = this.querySelectorAll('[required]');
+
+      requiredFields.forEach(function (field) {
+        if (!field.value.trim()) {
+          isValid = false;
+          field.classList.add('input-error');
+        } else {
+          field.classList.remove('input-error');
+        }
+      });
+
+      if (!isValid) {
+        e.preventDefault(); // Prevent submission only if invalid
+        alert("Please fill out all required fields correctly.");
+      }
+    });
+  </script>
+
+
+</body>
+
+</html>

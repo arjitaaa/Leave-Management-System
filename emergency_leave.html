@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Emergency Leave Form</title>
+  <style>
+    body {
+      background-color: #fff8dc; /* light yellow background */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      background-color: #fff2a8; /* yellow form box */
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(100, 100, 0, 0.2);
+    }
+
+    h2 {
+      text-align: center;
+      color: #444;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border-radius: 6px;
+      border: 1px solid #999;
+      background-color: #fef9d1;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    button {
+      margin-top: 25px;
+      width: 100%;
+      background-color: #c9a100;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #a38000;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Emergency Leave Form</h2>
+    <form id="emergencyLeaveForm">
+
+      <!-- Leave Dates -->
+      <label for="fromDate">Leave From:</label>
+      <input type="date" id="fromDate" name="fromDate" required>
+
+      <label for="toDate">Leave To:</label>
+      <input type="date" id="toDate" name="toDate" required>
+
+      <!-- Emergency Reason -->
+      <label for="emergencyReason">Reason for Emergency:</label>
+      <textarea id="emergencyReason" name="emergencyReason" rows="3" placeholder="Explain the emergency reason" required></textarea>
+
+      <!-- Travel Mode -->
+      <label for="travelMode">Travel Mode:</label>
+      <select id="travelMode" name="travelMode" onchange="toggleParentSection()" required>
+        <option value="">-- Select --</option>
+        <option value="Alone">Going Alone</option>
+        <option value="With Parents">Going With Parents</option>
+      </select>
+
+      <!-- Parent Info Section (visible only if going with parents) -->
+      <div id="parentInfo" class="hidden">
+        <label for="parentPhone">Parent's Mobile Number:</label>
+        <input type="tel" id="parentPhone" name="parentPhone" placeholder="e.g. 9876543210">
+
+        <label for="parentAddress">Parent's Address:</label>
+        <textarea id="parentAddress" name="parentAddress" rows="3" placeholder="Enter parent's address"></textarea>
+      </div>
+
+      <!-- Student Address -->
+      <label for="studentAddress">Your Address:</label>
+      <textarea id="studentAddress" name="studentAddress" rows="3" placeholder="Enter your address" required></textarea>
+
+      <!-- Submit -->
+      <button type="submit">Submit Emergency Leave</button>
+
+    </form>
+  </div>
+
+  <script>
+    function toggleParentSection() {
+      const mode = document.getElementById("travelMode").value;
+      const parentInfo = document.getElementById("parentInfo");
+
+      if (mode === "With Parents") {
+        parentInfo.classList.remove("hidden");
+        document.getElementById("parentPhone").required = true;
+        document.getElementById("parentAddress").required = true;
+      } else {
+        parentInfo.classList.add("hidden");
+        document.getElementById("parentPhone").required = false;
+        document.getElementById("parentAddress").required = false;
+      }
+    }
+
+    // Form submission
+    document.getElementById("emergencyLeaveForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("Emergency Leave Form Submitted Successfully!");
+      this.reset();
+      document.getElementById("parentInfo").classList.add("hidden");
+    });
+  </script>
+
+</body>
+</html>

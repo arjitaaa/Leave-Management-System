@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Summer/Diwali Leave Form</title>
+  <style>
+    body {
+      background-color: #ffe6f0; /* light pink background */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      background-color: #ffcce0; /* darker pink box */
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
+    }
+
+    h2 {
+      text-align: center;
+      color: #800040;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 600;
+      color: #660033;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border-radius: 6px;
+      border: 1px solid #cc6699;
+      background-color: #ffe6f5;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    button {
+      margin-top: 25px;
+      width: 100%;
+      background-color: #d147a3;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #b33682;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Summer / Diwali Leave Form</h2>
+    <form id="festivalLeaveForm">
+
+      <!-- Leave Dates -->
+      <label for="fromDate">Leave From:</label>
+      <input type="date" id="fromDate" name="fromDate" required>
+
+      <label for="toDate">Leave To:</label>
+      <input type="date" id="toDate" name="toDate" required>
+
+      <!-- Travel Mode -->
+      <label for="travelMode">Are you going:</label>
+      <select id="travelMode" name="travelMode" onchange="toggleParentFields()" required>
+        <option value="">-- Select --</option>
+        <option value="Alone">Alone</option>
+        <option value="With Parents">With Parents</option>
+      </select>
+
+      <!-- Parent's Details (visible only if going with parents) -->
+      <div id="parentFields" class="hidden">
+        <label for="parentPhone">Parent's Mobile Number:</label>
+        <input type="tel" id="parentPhone" name="parentPhone">
+
+        <label for="parentAddress">Parent's Address:</label>
+        <textarea id="parentAddress" name="parentAddress" rows="3"></textarea>
+      </div>
+
+      <!-- Student Address -->
+      <label for="studentAddress">Your Address:</label>
+      <textarea id="studentAddress" name="studentAddress" rows="3" required></textarea>
+
+      <!-- Reason for Leave -->
+      <label for="reason">Reason for Leave:</label>
+      <textarea id="reason" name="reason" rows="3" required></textarea>
+
+      <!-- Submit Button -->
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    function toggleParentFields() {
+      const travelMode = document.getElementById('travelMode').value;
+      const parentFields = document.getElementById('parentFields');
+
+      if (travelMode === 'With Parents') {
+        parentFields.classList.remove('hidden');
+      } else {
+        parentFields.classList.add('hidden');
+      }
+    }
+  </script>
+
+</body>
+</html>

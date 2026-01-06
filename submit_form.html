@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Leave Application</title>
+    <link rel="stylesheet" href="submit_form.css">
+</head>
+<body>
+
+    <div class="shape-1"></div>
+    <div class="shape-2"></div>
+    
+    <div class="card">
+        <h1>Student Leave Application</h1>
+        
+        <form id="leaveForm">
+            <div class="form-group">
+                <label for="studentName">Student Name</label>
+                <input type="text" id="studentName" name="studentName" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="branch">Branch</label>
+                <select id="branch" name="branch" required>
+                    <option value="" disabled selected>Select your branch</option>
+                    <option value="CSE">Computer Science and Engineering (CSE)</option>
+                    <option value="IT">Information Technology (IT)</option>
+                    <option value="ECE">Electronics and Communication Engineering (ECE)</option>
+                    <option value="EEE">Electrical and Electronics Engineering (EEE)</option>
+                    <option value="CH">Chemical Engineering (CH)</option>
+                    <option value="BT">Biotechnology (BT)</option>
+                    <option value="MECH">Mechatronics (MECH)</option>
+                    <option value="AI">Artificial Intelligence (AI)</option>
+                    <option value="ML">Machine Learning (ML)</option>
+                </select>
+            </div>
+            
+            
+            <div class="form-group">
+                <label for="leaveType">Leave Type</label>
+                <select id="leaveType" name="leaveType" required>
+                    <option value="" disabled selected>Select Leave Type</option>
+                    <option value="casual">Casual Leave</option>
+                    <option value="emergency">Emergency Leave</option>
+                    <option value="academic">Academic Leave</option>
+                    <option value="festival">Diwali/Summer Leave</option>
+                </select>
+            </div>
+            
+            <div class="date-group">
+                <div class="form-group">
+                    <label for="fromDate">From Date</label>
+                    <input type="date" id="fromDate" name="fromDate" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="toDate">To Date</label>
+                    <input type="date" id="toDate" name="toDate" required>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Moving Outstation?</label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="outstationYes" name="outstation" value="yes" required>
+                        <label for="outstationYes">Yes</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="outstationNo" name="outstation" value="no">
+                        <label for="outstationNo">No</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="buttons">
+                <button type="submit" class="submit-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.5.5 0 0 1-.934.018L5.5 9.5l-4.158 5.827a.5.5 0 0 1-.808-.542l6.5-13.5a.5.5 0 0 1 .808 0z"/>
+                    </svg>
+                    Submit
+                </button>
+    
+                <button type="button" id="viewBtn" class="view-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z"/>
+                        <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"/>
+                    </svg>
+                    View
+                </button>
+            </div>
+        </form>
+    </div>
+    <script>
+
+        document.getElementById('leaveForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Create confetti effect
+            createConfetti();
+            
+            // Get form data
+            const formData = {
+                studentName: document.getElementById('studentName').value,
+                branch: document.getElementById('branch').value,
+                leaveType: document.getElementById('leaveType').value,
+                fromDate: document.getElementById('fromDate').value,
+                toDate: document.getElementById('toDate').value,
+                outstation: document.querySelector('input[name="outstation"]:checked').value
+            };
+            
+            // Store data in localStorage
+            localStorage.setItem('leaveApplicationData', JSON.stringify(formData));
+            
+            // Redirect to appropriate leave page
+            redirectToLeavePage(formData.leaveType);
+        });
+        
+        document.getElementById('viewBtn').addEventListener('click', function() {
+            const data = localStorage.getItem('leaveApplicationData');
+            if (data) {
+                const formData = JSON.parse(data);
+                alert(`Saved Application:\n\nName: ${formData.studentName}\nBranch: ${formData.branch}\nLeave Type: ${getLeaveTypeName(formData.leaveType)}\nFrom: ${formData.fromDate}\nTo: ${formData.toDate}\nOutstation: ${formData.outstation === 'yes' ? 'Yes' : 'No'}`);
+            } else {
+                alert('No saved application found.');
+            }
+        });
+        
+        function redirectToLeavePage(leaveType) {
+            // In a real application, you would redirect to different pages based on leave type
+            // For this example, we'll just show an alert
+            const leaveTypeName = getLeaveTypeName(leaveType);
+            alert(`Application submitted successfully!\n\nRedirecting to ${leaveTypeName} page...`);
+            
+            // Here you would typically do:
+            // window.location.href = `${leaveType}-leave.html`;
+        }
+        
+        function getLeaveTypeName(leaveType) {
+            switch(leaveType) {
+                case 'casual': return 'Casual Leave';
+                case 'emergency': return 'Emergency Leave';
+                case 'academic': return 'Academic Leave';
+                case 'festival': return 'Diwali/Summer Leave';
+                default: return leaveType;
+            }
+        }
+        
+        function createConfetti() {
+            const colors = ['#6495ED', '#FFB6C1', '#9370DB', '#FFA07A', '#98FB98'];
+            
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = Math.random() * window.innerWidth + 'px';
+                confetti.style.top = '-10px';
+                confetti.style.width = Math.random() * 10 + 5 + 'px';
+                confetti.style.height = confetti.style.width;
+                document.body.appendChild(confetti);
+                
+                const animationDuration = Math.random() * 3 + 2;
+                
+                confetti.animate([
+                    { 
+                        transform: `translate(${Math.random() * 200 - 100}px, ${window.innerHeight}px) rotate(${Math.random() * 360}deg)`,
+                        opacity: 1
+                    },
+                    { 
+                        opacity: 0 
+                    }
+                ], {
+                    duration: animationDuration * 1000,
+                    easing: 'cubic-bezier(0,0.2,0.8,1)',
+                });
+                
+                setTimeout(() => {
+                    confetti.remove();
+                }, animationDuration * 1000);
+            }
+        }
+    </script>
+</body>
+</html>
+ 
+
