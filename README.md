@@ -62,46 +62,24 @@ authentication, approval tracking, and role-based access control.
 4. HOD provides final approval or rejection.
 5. Final leave status is updated and visible to the student.
 
-## Folder Structure
-
-The project follows a structured folder hierarchy to maintain
-separation of concerns and improve maintainability.
+## Project Structure
 
 Leave-Management-System/
-│
-├── database/
-│   └── leavedb.sql
-│
-├── student/
-│   ├── register.php
-│   ├── login.php
-│   ├── dashboard.php
-│   ├── apply_leave.php
-│   ├── leave_history.php
-│   └── logout.php
-│
-├── parent/
-│   ├── parent_login.php
-│   ├── parent_dashboard.php
-│   ├── parent_leave_view.php
-│   └── parent_approve.php
-│
-├── hod/
-│   ├── hod_login.php
-│   ├── hod_dashboard.php
-│   ├── hod_leave_history.php
-│   └── hod_approve.php
-│
-├── config/
-│   └── db_connect.php
-│
-├── assets/
-│   ├── css/
-│   ├── js/
-│   └── images/
-│
-├── index.php
+├── index.html
+├── login.html
+├── dashboard.html
+├── apply_leave.php
+├── leave_history.php
+├── parent_login.php
+├── hod_login.php
+├── db_connect.php
+├── style.css
+├── script.js
+├── leavedb.sql
 └── README.md
+
+
+
 
 ## How to Run the Project Locally (macOS)
 1. Clone the repository:
