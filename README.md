@@ -63,7 +63,7 @@ authentication, approval tracking, and role-based access control.
 5. Final leave status is updated and visible to the student.
 
 ## Project Structure
-
+```
 Leave-Management-System/
 ├── index.html
 ├── login.html
@@ -77,7 +77,7 @@ Leave-Management-System/
 ├── script.js
 ├── leavedb.sql
 └── README.md
-
+```
 
 
 
